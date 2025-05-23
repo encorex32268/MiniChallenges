@@ -13,3 +13,10 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+*.idea
+.kotlin
+.idea
+
+.idea/vcs.xml
+.idea/misc.xml
