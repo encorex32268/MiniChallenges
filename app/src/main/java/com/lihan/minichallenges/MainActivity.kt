@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +16,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,6 +29,7 @@ import com.lihan.minichallenges.february2025.BatteryIndicator
 import com.lihan.minichallenges.february2025.BatterySection
 import com.lihan.minichallenges.february2025.data.DeviceBatteryObserve
 import com.lihan.minichallenges.february2025.domain.BatteryObserve
+import com.lihan.minichallenges.march2025.DawnAndDusk
 import com.lihan.minichallenges.ui.theme.MiniChallengesTheme
 
 class MainActivity : ComponentActivity() {
@@ -37,21 +43,19 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MiniChallengesTheme {
+                var stars by rememberSaveable {
+                    mutableIntStateOf(0)
+                }
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val batteryLevelObserve by batteryObserve.updateBatteryLevel().collectAsStateWithLifecycle(0f)
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(Color(0xFFE7E9EF))
-                            .padding(innerPadding),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
+                    Box(
+                        modifier = Modifier.fillMaxSize()
                     ){
-                        BatterySection(
-                            modifier = Modifier.fillMaxWidth().height(100.dp),
-                            level = batteryLevelObserve,
+                        DawnAndDusk(
+                            stars = stars,
+                            onStarClick = {
+                                stars = it
+                            }
                         )
-
                     }
                 }
             }
