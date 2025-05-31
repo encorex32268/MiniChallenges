@@ -4,32 +4,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.lihan.minichallenges.february2025.BatteryIndicator
-import com.lihan.minichallenges.february2025.BatterySection
+import androidx.core.view.WindowCompat
 import com.lihan.minichallenges.february2025.data.DeviceBatteryObserve
 import com.lihan.minichallenges.february2025.domain.BatteryObserve
-import com.lihan.minichallenges.march2025.DawnAndDusk
+import com.lihan.minichallenges.march2025.MarsWeather
+import com.lihan.minichallenges.march2025.MarsWeatherInfoUi
 import com.lihan.minichallenges.ui.theme.MiniChallengesTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,18 +29,31 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MiniChallengesTheme {
-                var stars by rememberSaveable {
-                    mutableIntStateOf(0)
+                var marsWeatherUi = remember {
+                    MarsWeatherInfoUi(
+                        placeName = "Olympus Mons",
+                        temperature = "-63",
+                        temperatureHeight = "-52",
+                        temperatureLow = "-73",
+                        windSpeed = "27km/h NW",
+                        pressure = "600 Pa",
+                        uv = "0.5 mSv/day",
+                        martianDate = "914 Sol"
+                    )
                 }
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Surface(modifier = Modifier.fillMaxSize()) {
                     Box(
                         modifier = Modifier.fillMaxSize()
-                    ){
-                        DawnAndDusk(
-                            stars = stars,
-                            onStarClick = {
-                                stars = it
-                            }
+                    ) {
+                        MarsWeather(
+                            placeName = marsWeatherUi.placeName,
+                            temperature = marsWeatherUi.temperature,
+                            temperatureHeight = marsWeatherUi.temperatureHeight,
+                            temperatureLow = marsWeatherUi.temperatureLow,
+                            windSpeed = marsWeatherUi.windSpeed,
+                            pressure = marsWeatherUi.pressure,
+                            uv = marsWeatherUi.uv,
+                            martianDate = marsWeatherUi.martianDate
                         )
                     }
                 }
