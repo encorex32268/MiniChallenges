@@ -1,4 +1,4 @@
-package com.lihan.minichallenges.march2025
+package com.lihan.minichallenges._2025.march
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

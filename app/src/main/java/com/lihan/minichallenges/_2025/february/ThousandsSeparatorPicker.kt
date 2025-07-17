@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalAnimationApi::class)
 
-package com.lihan.minichallenges.february2025
+package com.lihan.minichallenges._2025.february
 
 import com.lihan.minichallenges.ui.theme.MiniChallengesTheme
 

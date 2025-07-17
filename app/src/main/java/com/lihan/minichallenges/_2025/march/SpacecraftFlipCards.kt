@@ -1,4 +1,4 @@
-package com.lihan.minichallenges.march2025
+package com.lihan.minichallenges._2025.march
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.CubicBezierEasing

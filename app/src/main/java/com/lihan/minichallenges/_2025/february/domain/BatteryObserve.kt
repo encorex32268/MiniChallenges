@@ -1,4 +1,4 @@
-package com.lihan.minichallenges.february2025.domain
+package com.lihan.minichallenges._2025.february.domain
 
 import kotlinx.coroutines.flow.Flow
 

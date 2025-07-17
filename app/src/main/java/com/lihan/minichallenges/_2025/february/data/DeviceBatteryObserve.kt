@@ -1,11 +1,11 @@
-package com.lihan.minichallenges.february2025.data
+package com.lihan.minichallenges._2025.february.data
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.BatteryManager
-import com.lihan.minichallenges.february2025.domain.BatteryObserve
+import com.lihan.minichallenges._2025.february.domain.BatteryObserve
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
